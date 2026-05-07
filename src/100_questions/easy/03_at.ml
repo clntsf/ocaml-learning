@@ -4,10 +4,9 @@ let rec at k lst =
     | _, [] -> None
     | n, x :: xs -> at (n-1) xs;;
 
-let print_str_option s = 
-  match s with
-    | Some x -> print_endline x
-    | None -> print_endline "Nothing!";;
+let print_str_option = function
+  | Some x -> print_endline x
+  | None -> print_endline "Nothing!";;
 
 (*
    can also be ... = print_str_option @@ tail @@ ["1"; "2"; "3"; "4"; "5"]
