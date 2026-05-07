@@ -1,9 +1,8 @@
-let rec lenr lst k =
-  match lst with
+let len =
+  let rec aux k = function
     | [] -> k
-    | x :: xs -> lenr xs k+1;;
-
-let len lst = lenr lst 0;;
+    | x :: xs -> aux (k+1) xs
+in aux 0;;
 
 let println_int x = Printf.printf "%d\n" x;;
 let () = ["1"; "2"; "3"; "4"; "5"] |> len |> println_int;; 

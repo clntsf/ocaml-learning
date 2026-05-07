@@ -1,16 +1,15 @@
-let rec concat a b =
-  match a with
-    | [] -> b
-    | x :: xs -> x :: concat xs b;;
+let rec concat b = function
+  | [] -> b
+  | x :: xs -> x :: concat b xs
+;;
 
-let rec packr m lst = 
-match m, lst with
-  | m, [] -> [m]
-  | m::ms, x::xs ->
-      let lm = m::ms in
-      if x = m                    (* equality comparison is = not like haskell *)
-        then packr (x::lm) (xs)
-        else lm::(packr [] (x::xs))
-  | [], x::xs -> packr [x] xs
-
-let pack = packr []
+let pack lst =
+  let rec packr ch ct = function
+    | [] -> [ch :: ct]
+    | x::xs when x = ch -> packr x (ch::ct) xs
+    | x :: xs -> (ch::ct) :: packr x [] xs
+in
+match lst with
+  | [] -> []
+  | x :: xs -> packr x [] xs
+;;
