@@ -26,6 +26,11 @@ let isdigit x =
     | None -> false
     | Some x -> true
 
+(*
+  I will come back to this later and maybe think it's bad,
+  but it works! teacher claude has suggested learning ocamllex and Menhir
+  so my days of manually hacking grammars may end soonish
+*)
 let parse_postfix toks =
   let rec aux stack toks =
     match stack, toks with
