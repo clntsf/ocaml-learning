@@ -50,4 +50,13 @@ let rec take k = function
   | x::xs -> x::take (k-1) xs
 ;;
 
-let slice a b lst = lst |> drop a |> take (b - a + 1);;
+(* 
+   just for instructional purposes for me – I will probably make
+   an operators.ml in this folder to teach myself about interesting
+   infix operations (alternation, composition etc)
+
+   the below is just |>
+*)
+let ( *|> ) x f = f x;;
+
+let slice a b lst = lst *|> (drop a) *|> take (b - a + 1);;
